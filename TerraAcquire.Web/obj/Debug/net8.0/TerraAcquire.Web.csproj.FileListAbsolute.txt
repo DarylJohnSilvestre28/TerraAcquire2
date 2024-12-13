@@ -1,0 +1,7 @@
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.AssemblyInfoInputs.cache
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.AssemblyInfo.cs
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.csproj.CoreCompileInputs.cache
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.RazorAssemblyInfo.cache
+C:\Users\daryl\source\repos\TerraAcquire.Web\TerraAcquire.Web\obj\Debug\net8.0\TerraAcquire.Web.RazorAssemblyInfo.cs

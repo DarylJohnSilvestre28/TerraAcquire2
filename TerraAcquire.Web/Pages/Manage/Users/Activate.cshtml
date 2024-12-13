@@ -1,0 +1,80 @@
+﻿@page "/manage/user/activate"
+@model TerraAcquire.Web.Pages.Manage.Users.Activate
+@{
+}
+
+<form method="Post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="@Model.Dto!.Title">Title</label>
+        <input type="text" asp-for="@Model.Dto!.Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title">
+        <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c00" />
+    </div>
+    <div class="form-group">
+        <label for="@Model.Dto!.Content">Content</label>
+        <textarea id="content" asp-for="@Model.Dto!.Content" for="@Model.Dto!.Content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="@Model.ImageFile">Image File</label>
+        <input type="file" asp-for="@Model.ImageFile" for="@Model.ImageFile" />
+    </div>
+
+    <span> @Model!.Error </span>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quill.js HTML Editor</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        #editor-container {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Simple Quill.js HTML Editor</h2>
+
+        <!-- Create the editor container -->
+        <div id="editor-container"></div>
+
+        <!-- Add a button to extract the HTML -->
+        <button id="get-html-btn">Get HTML</button>
+
+        <!-- Output the HTML -->
+        <div id="html-output"></div>
+
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        // Step 1: Initialize Quill editor
+        var quill = new Quill('#editor-container', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, 4, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],    // toggled buttons
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    ['link', 'image'], // Link and image support
+                    ['clean']                                         // remove formatting button
+                ]
+            }
+        });
+
+        // Step 2: Handle the Get HTML button click
+        document.getElementById('get-html-btn').addEventListener('click', function () {
+            var html = quill.root.innerHTML;  // Get the HTML content
+            document.getElementById('html-output').innerText = html;  // Output it to a div
+        });
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+﻿﻿@page "/manage/model-houses"
+@model TerraAquire.Web.Pages.Manage.ModelHouses.Index
+@{
+}
+
+<h2>House Models</h2>
+<a href="~/manage/model-houses/create" class="btn btn-success">Create New</a>
+@{
+    if (Model.ModelHouses != null)
+    {
+        
+        if (Model.ModelHouses.IsActive == true)
+        {
+            <a href="~/manage/model-houses?isActive=false" class="btn btn-success">View Inactive</a>
+        }
+        else
+        {
+            <a href="~/manage/model-houses?isActive=true" class="btn btn-success">View Active</a>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var modelHouse in Model.ModelHouses.Items)
+                    {
+                        <tr>
+                            <th scope="row">@modelHouse.Name</th>
+                            <td><a href="~/manage/model-houses/update/@modelHouse.Id" class="btn btn-secondary">Update</a></td>
+                            <td>
+                                @{
+                                    if (modelHouse.IsActive == true)
+                                    {
+                                        <a href="~/manage/model-houses/delete/@modelHouse.Id" class="btn btn-danger">Delete</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/manage/model-houses/restore/@modelHouse.Id" class="btn btn-success">Restore</a>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+               }           
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @{
+                    if (Model.ModelHouses.PageIndex > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/model-houses?isActive=@(Model.ModelHouses.IsActive)&pageIndex=@(Model.ModelHouses.PageIndex-1)&pageSize=@(Model.ModelHouses.PageSize)">Previous</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="">@Model.ModelHouses.PageIndex of @Model.ModelHouses.PageCount</a></li>
+                @{
+                    if (Model.ModelHouses.PageCount > Model.ModelHouses.PageIndex)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/model-houses?isActive=@(Model.ModelHouses.IsActive)&pageIndex=@(Model.ModelHouses.PageIndex+1)&pageSize=@(Model.ModelHouses.PageSize)">Next</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+}
