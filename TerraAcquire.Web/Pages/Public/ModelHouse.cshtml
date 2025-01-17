@@ -1,0 +1,17 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Public.ModelHouse
+@{
+    ViewData["Title"] = "Model House";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>@Model.House.Name</h3>
+    <ul>
+        <li><strong>Square Feet:</strong> @Model.House.SquareFeet</li>
+        <li><strong>Bedrooms:</strong> @Model.House.Bedrooms</li>
+        <li><strong>Bathrooms:</strong> @Model.House.Bathrooms</li>
+        <li><strong>Price:</strong> @Model.House.Price.ToString("C")</li>
+    </ul>
+</div>
