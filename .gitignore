@@ -1,1 +1,3 @@
 obj/TerraAcquire.EntityFramework.EntityFrameworkCore.targets
+TerraAcquire.Web/obj/
+TerraAcquire.Web/bin/
