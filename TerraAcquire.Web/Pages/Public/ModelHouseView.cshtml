@@ -1,0 +1,36 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Public.ModelHouse
+@{
+    ViewData["Title"] = "Model Houses View";    
+
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">Available Model Houses</h2>
+
+    @if (Model.Houses != null && Model.Houses.Any())
+    {
+        <div class="row">
+            @foreach (var house in Model.Houses)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@house.Name</h5>
+                            <p class="card-text">
+                                <strong>Area:</strong> @house.SquareFeet sqft<br />
+                                <strong>Bedrooms:</strong> @house.Bedrooms<br />
+                                <strong>Bathrooms:</strong> @house.Bathrooms<br />
+                                <strong>Price:</strong> @house.Price.ToString("C")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No model houses available at the moment.</p>
+    }
+</div>

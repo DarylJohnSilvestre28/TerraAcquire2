@@ -1,0 +1,58 @@
+﻿@page
+@model CalendarViewModel
+@{
+    ViewData["Title"] = "Calendar View";
+}
+
+<h2>Calendar View - @Model.CurrentMonthName @Model.CurrentYear</h2>
+
+<table class="calendar">
+    <thead>
+        <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var week in Model.CalendarGrid)
+        {
+            <tr>
+                @foreach (var day in week)
+                {
+                    if (day == 0)
+                    {
+                        <td></td>
+                    }
+                    else
+                    {
+                        <td>@day</td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .calendar {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .calendar th, .calendar td {
+            border: 1px solid #ccc;
+            width: 14.28%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .calendar td {
+            height: 80px;
+        }
+</style>

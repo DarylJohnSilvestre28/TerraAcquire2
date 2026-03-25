@@ -1,0 +1,60 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Agent.DashboardModel
+@{
+    ViewData["Title"] = "Agent Dashboard";
+}
+
+<style>
+    body {
+        background: url('https://images.pexels.com/photos/259637/pexels-photo-259637.jpeg?_gl=1*1rgvrip*_ga*OTkzMzE1NDY4LjE3NjU5NTY0NTU.*_ga_8JE65Q40S6*czE3NzM4NTE5MTEkbzMkZzEkdDE3NzM4NTE5NTIkajE5JGwwJGgw') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .overlay {
+        min-height: 100vh;
+        padding-top: 50px;
+    }
+</style>
+
+<div class="overlay">
+    <div class="container">
+
+        <h2 class="fw-bold mb-5 text-center text-white">Agent Dashboard</h2>
+
+        <div class="row justify-content-center g-4">
+
+            <!-- Manage Listings -->
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-4 p-4 text-center h-100">
+                    <i class="bi bi-house-door-fill fs-1 text-success mb-3"></i>
+                    <h4>Manage Houses</h4>
+                    <p>View and update model houses.</p>
+                    <a href="/Manage/ModelHouses" class="btn btn-success">
+                        Go
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tripping Schedule -->
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-4 p-4 text-center h-100">
+                    <i class="bi bi-calendar-event fs-1 text-success mb-3"></i>
+                    <h4>Tripping Schedule</h4>
+                    <p>View and manage tripping schedules.</p>
+                    <a href="/Manage/ModelHouses/MainPage" class="btn btn-success">
+                        Open Calendar
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Logout -->
+        <div class="mt-5 text-center">
+            <a href="/Agent/Login" class="btn" style="background-color: black; color: white;">
+                Logout
+            </a>
+        </div>
+
+    </div>
+</div>

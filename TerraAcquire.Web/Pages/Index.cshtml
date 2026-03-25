@@ -1,0 +1,144 @@
+﻿@page
+@model TerraAcquire.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .hero {
+        height: 150vh;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/19963719/pexels-photo-19963719.jpeg') no-repeat center center;
+        background-size: cover;
+        color: greenyellow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+    .hero-logo {
+        max-width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .btn-yellowgreen {
+        background-color: yellowgreen;
+        color: white;
+        border: none;
+    }
+
+        .btn-yellowgreen:hover {
+            background-color: #6ba74b;
+            color: white;
+        }
+
+    .features {
+        padding: 60px 20px;
+        background-color: #f8f9fa;
+    }
+
+    .feature-card {
+        border: none;
+        transition: transform 0.3s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+    .ar-section {
+        padding: 60px 20px;
+        text-align: center;
+        background: #fff;
+    }
+
+        .ar-section h2 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+    .ar-container {
+        width: 100%;
+        height: 500px;
+        margin: auto;
+    }
+</style>
+
+
+<section class="hero">
+    <div>
+        <img src="~/images/logo.png" alt="TerraAcquire Logo" class="hero-logo" />
+        <h1>Welcome to TerraAcquire</h1>
+        <p>Explore homes virtually with Augmented Reality</p>
+        <a class="btn btn-yellowgreen btn-lg" href="/ModelHouses">Browse Model Houses</a>
+    </div>
+</section>
+
+
+<section class="features">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <h4 class="fw-bold">Immersive Tours</h4>
+                    <p>Walk through houses virtually using our AR-powered platform.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <h4 class="fw-bold">Interactive Designs</h4>
+                    <p>Visualize furniture and layouts before making decisions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <h4 class="fw-bold">Smart Matching</h4>
+                    <p>Get recommendations based on your preferences and budget.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ar-section">
+    <h2>View Our Model House in AR</h2>
+    <p>Point your camera at the marker to load the 3D house model.</p>
+
+    <div class="ar-container">
+        <a-scene embedded arjs>
+
+            <a-marker type="pattern" url="/markers/qr-code.patt/daryl.png">
+                <a-entity gltf-model="url(/models/smallhouse.glb)"
+                          scale="0.1 0.1 0.1"
+                          position="0 0 0"
+                          rotation="0 0 0">
+                </a-entity>
+            </a-marker>
+
+            <a-entity camera></a-entity>
+        </a-scene>
+    </div>
+</section>
+
+
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>

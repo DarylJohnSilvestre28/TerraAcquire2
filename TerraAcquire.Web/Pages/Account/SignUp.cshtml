@@ -1,0 +1,66 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Account.SignUp
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* Background with overlay */
+    .signup-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 50px); /* subtract navbar height */
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?_gl=1*uubrd9*_ga*OTQ5MjEyNTUzLjE3NDI3NDQwODM.*_ga_8JE65Q40S6*czE3NTQ4MzM3MzYkbzkkZzEkdDE3NTQ4MzM3MzckajU5JGwwJGgw) no-repeat center center;
+        background-size: cover;
+    }
+
+    .signup-card {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 30px;
+        border: 2px solid #ccc;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9); /* semi-transparent white */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    .form-wrapper {
+        margin-top: auto;
+    }
+</style>
+
+<div class="signup-page">
+    <div class="signup-card">
+        <h2 class="text-center mb-4">Create Account</h2>
+
+        <div class="form-wrapper">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="Username" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="Email" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="Password" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>

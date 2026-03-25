@@ -1,0 +1,41 @@
+﻿@page "{id:guid}"
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.EditModel
+@{
+    ViewData["Title"] = "Edit Model House";
+}
+
+<h2>Edit Model House</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="ModelHouse.Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input asp-for="ModelHouse.Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Location</label>
+        <input asp-for="ModelHouse.Location" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input asp-for="ModelHouse.Price" type="number" step="0.01" class="form-control" />
+    </div>
+
+    <!-- ADD THIS -->
+    <div class="mb-3">
+        <label class="form-label">Bedrooms</label>
+        <input asp-for="ModelHouse.Bedrooms" type="number" min="0" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Bathrooms</label>
+        <input asp-for="ModelHouse.Bathrooms" type="number" min="0" class="form-control" />
+    </div>
+    <!-- END ADD -->
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

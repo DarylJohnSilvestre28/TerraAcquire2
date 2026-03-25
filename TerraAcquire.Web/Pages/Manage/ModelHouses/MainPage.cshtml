@@ -1,0 +1,215 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.MainPageModel
+@{
+    ViewData["Title"] = "Main Page";
+
+
+}
+
+<div class="hero text-white text-center d-flex align-items-center justify-content-center"
+     style="background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+            url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1600')
+            no-repeat center/cover; height: 70vh;">
+    <div>
+        <h1 class="display-4 fw-bold">Welcome to TerraAcquire</h1>
+        <p class="lead">Find, Manage, and Browse Model Houses with Ease</p>
+        <a href="/Manage/ModelHouses" class="btn btn-success btn-lg mt-3">
+            Browse Model Houses
+        </a>
+    </div>
+</div>
+
+<div class="container my-5">
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-house-fill text-success fs-1 me-3"></i>
+                    <h3 class="fw-bold mb-0">Overview</h3>
+                </div>
+                <p>
+                    Manage all <b>Model Houses</b> in one place. Track availability,
+                    update listings, and stay organized with a clean interface.
+                </p>
+                <a href="/Manage/ModelHouses" class="btn btn-success">
+                    Go to Management
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100">
+                <h3 class="fw-bold mb-3">Quick Links</h3>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="/Manage/ModelHouses" class="d-flex align-items-center text-decoration-none">
+                            <i class="bi bi-gear me-2 text-success"></i>
+                            Manage Model Houses
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/Public/Listings" class="d-flex align-items-center text-decoration-none">
+                            <i class="bi bi-search me-2 text-success"></i>
+                            Browse Public Listings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Login" class="d-flex align-items-center text-decoration-none">
+                            <i class="bi bi-shield-lock me-2 text-success"></i>
+                            Admin Login
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/Agent/Login" class="d-flex align-items-center text-decoration-none">
+                            <i class="bi bi-person-badge me-2 text-success"></i>
+                            Agent Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-lg border border-2 border-success rounded-4 p-4">
+
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-calendar-event text-success fs-2 me-3"></i>
+                    <h3 class="fw-bold mb-0">Schedule & Tripping</h3>
+                </div>
+
+                <div class="mb-3 text-end">
+                    <button id="addEventBtn" type="button" class="btn btn-success">
+                        Add New Tripping
+                    </button>
+                </div>
+
+                <div id="calendar"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="trippingModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Tripping</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="trippingForm">
+
+                        @Html.AntiForgeryToken()
+
+                        <input id="tripTitle"
+                               class="form-control mb-2"
+                               placeholder="Agent / Trip Title">
+
+                        <!-- ✅ FIXED: datetime-local -->
+                        <input id="tripDateTime"
+                               type="datetime-local"
+                               class="form-control mb-2">
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button type="button" id="saveTripping" class="btn btn-success">
+                        Save
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                const calendarEl = document.getElementById('calendar');
+
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    selectable: true,
+                    height: 'auto',
+                    displayEventTime: true,
+                    events: '?handler=GetTrippings',
+
+                    select(info) {
+                        document.getElementById('tripDateTime').value = info.startStr;
+                        new bootstrap.Modal(document.getElementById('trippingModal')).show();
+                    }
+                });
+
+                calendar.render();
+
+                // Open modal
+                document.getElementById('addEventBtn').addEventListener('click', () => {
+                    new bootstrap.Modal(document.getElementById('trippingModal')).show();
+                });
+
+                // Save Tripping
+                document.getElementById('saveTripping').addEventListener('click', () => {
+
+                    const name = document.getElementById('tripTitle').value.trim();
+                    const dateTime = document.getElementById('tripDateTime').value;
+
+                    if (!name || !dateTime) {
+                        alert('Please fill all fields');
+                        return;
+                    }
+
+                    const formData = new FormData();
+
+                    // ✅ MUST MATCH BACKEND [BindProperty]
+                    formData.append('Tripping.AgentName', name);
+                    formData.append('Tripping.DateTime', dateTime);
+
+                    const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                    fetch('?handler=SaveTripping', {
+                        method: 'POST',
+                        headers: {
+                            'RequestVerificationToken': token
+                        },
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.success) {
+
+                            calendar.refetchEvents();
+
+                            // clear inputs
+                            document.getElementById('tripTitle').value = '';
+                            document.getElementById('tripDateTime').value = '';
+
+                            bootstrap.Modal.getInstance(document.getElementById('trippingModal')).hide();
+
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Something went wrong');
+                    });
+
+                });
+
+            });
+        </script>
+    }

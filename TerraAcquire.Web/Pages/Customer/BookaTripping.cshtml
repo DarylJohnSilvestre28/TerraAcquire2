@@ -1,0 +1,50 @@
+﻿@page
+@model BookaTrippingModel
+@{
+    ViewData["Title"] = "Book a Tripping";
+}
+
+<h2>Book a House Tripping</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Trip.FullName"></label>
+        <input asp-for="Trip.FullName" class="form-control" />
+        <span asp-validation-for="Trip.FullName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Trip"></label>
+        <input asp-for="Trip" class="form-control" />
+        <span asp-validation-for="Trip" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Trip.DestinationId"></label>
+        <select asp-for="Trip.DestinationId" asp-items="Model.DestinationList" class="form-control">
+            <option value="">-- Select a Model House --</option>
+        </select>
+        <span asp-validation-for="Trip.DestinationId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Trip.TripDate"></label>
+        <input asp-for="Trip.TripDate" type="date" class="form-control" />
+        <span asp-validation-for="Trip.TripDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Trip.TripTime"></label>
+        <input asp-for="Trip.TripTime" type="time" class="form-control" />
+        <span asp-validation-for="Trip.TripTime" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+</form>
+
+@if (Model.IsSuccess)
+{
+    <div class="alert alert-success mt-3">
+        Booking successfully submitted!
+    </div>
+}

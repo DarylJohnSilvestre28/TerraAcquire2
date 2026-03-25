@@ -1,0 +1,57 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.CreateModel
+
+<h2>Add New Model House</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="House.Name"></label>
+        <input asp-for="House.Name" class="form-control" />
+        <span asp-validation-for="House.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="House.Description"></label>
+        <input asp-for="House.Description" class="form-control" />
+        <span asp-validation-for="House.Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="House.Location"></label>
+        <input asp-for="House.Location" class="form-control" />
+        <span asp-validation-for="House.Location" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="House.Price"></label>
+        <input asp-for="House.Price" class="form-control" />
+        <span asp-validation-for="House.Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="House.Bedrooms"></label>
+        <input asp-for="House.Bedrooms" class="form-control" type="number" min="0" />
+        <span asp-validation-for="House.Bedrooms" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="House.Bathrooms"></label>
+        <input asp-for="House.Bathrooms" class="form-control" type="number" min="0" />
+        <span asp-validation-for="House.Bathrooms" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

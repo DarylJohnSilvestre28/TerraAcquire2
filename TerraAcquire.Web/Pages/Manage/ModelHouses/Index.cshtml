@@ -1,0 +1,66 @@
+﻿@page
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.IndexModel
+@{
+    ViewData["Title"] = "Model Houses";
+}
+
+<h1 class="mb-4">Model Houses</h1>
+
+<p>
+    <a asp-page="/Manage/ModelHouses/Create" class="btn btn-primary">
+        Add New Model House
+    </a>
+</p>
+
+@if (!Model.Houses.Any())
+{
+    <div class="alert alert-info">
+        No model houses found.
+    </div>
+}
+else
+{
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Bedrooms</th>
+                <th>Bathrooms</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var house in Model.Houses)
+            {
+                <tr>
+                    <td>@house.Name</td>
+                    <td>@house.Location</td>
+                    <td>@house.Price.ToString("C")</td>
+                    <td>@house.Bedrooms</td>
+                    <td>@house.Bathrooms</td>
+                    <td class="text-end">
+                        <a asp-page="/Manage/ModelHouses/Edit"
+                           asp-route-id="@house.Id"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <a asp-page="/Manage/ModelHouses/Details"
+                           asp-route-id="@house.Id"
+                           class="btn btn-info btn-sm">
+                            Details
+                        </a>
+
+                        <a asp-page="/Manage/ModelHouses/Delete"
+                           asp-route-id="@house.Id"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

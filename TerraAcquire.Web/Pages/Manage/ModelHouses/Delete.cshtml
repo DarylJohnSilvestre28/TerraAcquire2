@@ -1,0 +1,36 @@
+﻿@page "{id:guid}"
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.DeleteModel
+@{
+    ViewData["Title"] = "Delete Model House";
+}
+
+<h2>Delete Model House</h2>
+
+<h4 class="text-danger">Are you sure you want to delete this?</h4>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.House.Name</dd>
+
+            <dt class="col-sm-3">Location</dt>
+            <dd class="col-sm-9">@Model.House.Location</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9">@Model.House.Price.ToString("C")</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="House.Id" />
+
+            <button type="submit" class="btn btn-danger">
+                Delete
+            </button>
+
+            <a asp-page="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>

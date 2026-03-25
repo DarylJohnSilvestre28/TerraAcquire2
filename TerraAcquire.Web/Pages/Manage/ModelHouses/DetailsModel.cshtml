@@ -1,0 +1,39 @@
+﻿@page "{id:guid}"
+@model TerraAcquire.Web.Pages.Manage.ModelHouses.DetailsModel
+@{
+    ViewData["Title"] = "House Details";
+}
+
+<h2>House Details</h2>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Name</dd>
+
+    <dt class="col-sm-3">Location</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Location</dd>
+
+    <dt class="col-sm-3">Price</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Price.ToString("C")</dd>
+
+    <dt class="col-sm-3">Bedrooms</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Bedrooms</dd>
+
+    <dt class="col-sm-3">Bathrooms</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Bathrooms</dd>
+
+    <dt class="col-sm-3">Floors</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.Floors</dd>
+
+    <dt class="col-sm-3">Square Feet</dt>
+    <dd class="col-sm-9">@Model.ModelHouse.SquareFeet</dd>
+
+    @if (!string.IsNullOrEmpty(Model.ModelHouse.Description))
+    {
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.ModelHouse.Description</dd>
+    }
+</dl>
+
+<a asp-page="./Index" class="btn btn-secondary">Back to List</a>
