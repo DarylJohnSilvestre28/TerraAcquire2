@@ -1,0 +1,15 @@
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\bin\Debug\net9.0\TerraAcquire.EntityFramework.deps.json
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\bin\Debug\net9.0\TerraAcquire.EntityFramework.runtimeconfig.json
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\bin\Debug\net9.0\TerraAcquire.EntityFramework.dll
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\bin\Debug\net9.0\TerraAcquire.EntityFramework.pdb
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.csproj.AssemblyReference.cache
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.AssemblyInfoInputs.cache
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.AssemblyInfo.cs
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.csproj.CoreCompileInputs.cache
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.sourcelink.json
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.dll
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\refint\TerraAcquire.EntityFramework.dll
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.pdb
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\TerraAcquire.EntityFramework.genruntimeconfig.cache
+C:\Users\daryl\Documents\TerraAcquire\TerraAcquire.EntityFramework\obj\Debug\net9.0\ref\TerraAcquire.EntityFramework.dll
